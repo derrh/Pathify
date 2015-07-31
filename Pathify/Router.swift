@@ -14,7 +14,7 @@ public struct Router<R> {
     public mutating func addRoute<T>(#path: Path<T>, action: T->R) {
         let route: String->R? = { pathToRoute in
             if let match = path.match(pathToRoute) {
-                return action(match.parameters)
+                return action(match)
             }
             return nil
         }
